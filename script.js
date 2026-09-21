@@ -2,15 +2,13 @@ let count = 0;
 const MAX = 150;
 const canopy = document.getElementById('canopy');
 const counter = document.getElementById('counter');
-const treeEl = document.getElementById('tree');
 const starsContainer = document.getElementById('stars-container');
 
-// Tonos cálidos y dorados para las luces/flores nocturnas
 const petalColors = ['#ffd23f', '#ffb800', '#ffdd55', '#ff9900'];
 
-// --- 1. Generar Estrellas en el Cielo ---
+// 1. Generar Estrellas
 function createStars() {
-  starsContainer.innerHTML = ''; // Limpiar previo
+  starsContainer.innerHTML = '';
   for (let i = 0; i < 140; i++) {
     const star = document.createElement('div');
     star.className = 'star';
@@ -24,7 +22,7 @@ function createStars() {
 }
 createStars();
 
-// --- 2. Crear Flores SVG ---
+// 2. Flores SVG
 function flowerSVG(color) {
   const angles = [0, 72, 144, 216, 288];
   const petals = angles.map(a =>
@@ -33,17 +31,17 @@ function flowerSVG(color) {
   return `<svg viewBox="-14 -14 28 28"><g>${petals}<circle r="4.5" fill="#8a4f00"/></g></svg>`;
 }
 
-// --- 3. Agregar Flores a la Copa ---
+// 3. Agregar Flores/Luces
 function addBlossom() {
   if (count >= MAX) return;
 
-  // Distribución elíptica adaptada a la nueva copa más ancha
   const angle = Math.random() * Math.PI * 2;
   const r = Math.sqrt(Math.random());
-  const cx = 50 + r * 42 * Math.cos(angle);
-  const cy = 48 + r * 38 * Math.sin(angle);
+  
+  const cx = 50 + r * 40 * Math.cos(angle);
+  const cy = 45 + r * 35 * Math.sin(angle);
 
-  const size = 20 + Math.random() * 16;
+  const size = 18 + Math.random() * 16;
   const color = petalColors[Math.floor(Math.random() * petalColors.length)];
   const b = document.createElement('div');
   b.className = 'blossom';
@@ -59,11 +57,9 @@ function addBlossom() {
   count++;
   counter.textContent = 'LUCES: ' + count;
 }
-
-// Cargar flores iniciales al abrir
 for (let i = 0; i < 70; i++) addBlossom();
 
-// --- 4. Luciérnagas Animadas ---
+// 4. Luciérnagas
 function spawnFirefly(xPercent, yPercent = null) {
   const firefly = document.createElement('div');
   firefly.className = 'firefly';
@@ -82,20 +78,17 @@ function spawnFirefly(xPercent, yPercent = null) {
   setTimeout(() => firefly.remove(), 8000);
 }
 
-// Generar luciérnagas continuas
 setInterval(() => {
-  spawnFirefly(40 + Math.random() * 20, 30 + Math.random() * 35); // Cerca de la copa
-  spawnFirefly(10 + Math.random() * 80, 75 + Math.random() * 15); // Cerca del pasto
+  spawnFirefly(40 + Math.random() * 20, 30 + Math.random() * 35);
+  spawnFirefly(10 + Math.random() * 80, 75 + Math.random() * 15);
 }, 500);
 
-// --- 5. Interacción por Click / Tap ---
+// 5. Clicks/Taps
 document.body.addEventListener('click', (e) => {
   if (e.target.closest('.btn')) return;
 
-  // Agregar 3 flores por click
   addBlossom(); addBlossom(); addBlossom();
 
-  // Ráfaga de luciérnagas en las coordenadas del toque
   const xPercent = (e.clientX / window.innerWidth) * 100;
   const yPercent = (e.clientY / window.innerHeight) * 100;
 
@@ -104,7 +97,7 @@ document.body.addEventListener('click', (e) => {
   }
 });
 
-// --- 6. Sistema de Audio Ambiental (Web Audio API) ---
+// 6. Audio
 let audioCtx, playing = false, loopTimer;
 let padA, padB, padGain;
 const notes = [261.63, 329.63, 392.00, 440.00, 329.63, 392.00, 523.25, 392.00];

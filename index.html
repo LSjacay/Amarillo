@@ -21,32 +21,69 @@
   
   <div class="counter" id="counter">LUCES: 0</div>
 
+  <!-- Árbol ilustrado orgánico en capas SVG -->
   <div class="tree" id="tree">
-    <div class="canopy-bg"></div>
-    <svg class="trunk" viewBox="0 0 400 500" preserveAspectRatio="xMidYMax meet">
+    <svg viewBox="0 0 800 900" preserveAspectRatio="xMidYMax meet">
       <defs>
-        <linearGradient id="trunkGrad" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#0b2412"/>
-          <stop offset="50%" stop-color="#1d5229"/>
-          <stop offset="100%" stop-color="#0b2412"/>
+        <radialGradient id="leafGrad1" cx="40%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#2d6e32"/>
+          <stop offset="70%" stop-color="#18421c"/>
+          <stop offset="100%" stop-color="#0b240f"/>
+        </radialGradient>
+        <radialGradient id="leafGrad2" cx="30%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#388e3c"/>
+          <stop offset="75%" stop-color="#1b4d20"/>
+          <stop offset="100%" stop-color="#0a210d"/>
+        </radialGradient>
+        <linearGradient id="barkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#0e1f13"/>
+          <stop offset="35%" stop-color="#1e4023"/>
+          <stop offset="70%" stop-color="#2a5a31"/>
+          <stop offset="100%" stop-color="#0d1d11"/>
         </linearGradient>
       </defs>
-      <!-- Tronco más robusto -->
-      <path d="M180,500 C175,380 185,280 200,220 C215,280 225,380 220,500 Z" fill="url(#trunkGrad)"/>
-      <!-- Ramas extendidas a los lados -->
-      <g fill="none" stroke="url(#trunkGrad)" stroke-linecap="round">
-        <path d="M200,260 C150,210 90,170 30,130" stroke-width="14"/>
-        <path d="M200,250 C160,180 120,130 110,60" stroke-width="10"/>
-        <path d="M200,230 C200,160 200,100 200,40" stroke-width="12"/>
-        <path d="M200,250 C240,180 280,130 290,60" stroke-width="10"/>
-        <path d="M200,260 C250,210 310,170 370,130" stroke-width="14"/>
+
+      <!-- Tronco con raíces y ramas -->
+      <g id="trunk-group">
+        <path d="M 320,900 C 340,820 370,800 380,750 C 390,700 392,600 395,500 L 405,500 C 408,600 410,700 420,750 C 430,800 460,820 480,900 Z" fill="url(#barkGrad)" />
+        <path d="M 280,900 C 310,850 350,830 375,780 L 390,780 C 370,830 340,860 300,900 Z" fill="#0b240f" opacity="0.6"/>
+        <path d="M 520,900 C 490,850 450,830 425,780 L 410,780 C 430,830 460,860 500,900 Z" fill="#0b240f" opacity="0.6"/>
+
+        <path d="M 395,520 C 340,460 260,420 180,380 C 230,390 310,430 388,480 Z" fill="url(#barkGrad)"/>
+        <path d="M 405,520 C 460,460 540,420 620,380 C 570,390 490,430 412,480 Z" fill="url(#barkGrad)"/>
+        <path d="M 396,480 C 360,400 310,320 270,250 C 300,300 340,370 398,430 Z" fill="url(#barkGrad)"/>
+        <path d="M 404,480 C 440,400 490,320 530,250 C 500,300 460,370 402,430 Z" fill="url(#barkGrad)"/>
+      </g>
+
+      <!-- Follaje en capas orgánicas -->
+      <g id="foliage-group">
+        <circle cx="280" cy="320" r="140" fill="url(#leafGrad1)" />
+        <circle cx="520" cy="320" r="140" fill="url(#leafGrad1)" />
+        <circle cx="400" cy="220" r="160" fill="url(#leafGrad1)" />
+
+        <circle cx="220" cy="260" r="120" fill="url(#leafGrad2)" />
+        <circle cx="580" cy="260" r="120" fill="url(#leafGrad2)" />
+        <circle cx="330" cy="180" r="130" fill="url(#leafGrad2)" />
+        <circle cx="470" cy="180" r="130" fill="url(#leafGrad2)" />
+
+        <circle cx="400" cy="150" r="110" fill="url(#leafGrad2)" />
+        <circle cx="300" cy="240" r="100" fill="url(#leafGrad2)" />
+        <circle cx="500" cy="240" r="100" fill="url(#leafGrad2)" />
       </g>
     </svg>
+    
     <div class="canopy" id="canopy"></div>
   </div>
 
-  <div class="hills"></div>
-  <div class="hint">Hace click en cualquier parte para que florezcan mas luces</div>
+  <!-- Colinas con ondas suaves -->
+  <div class="hills">
+    <svg viewBox="0 0 1200 200" preserveAspectRatio="none">
+      <path d="M0,100 C300,40 600,120 1200,50 L1200,200 L0,200 Z" fill="#133d1a" opacity="0.7"/>
+      <path d="M0,80 C400,140 800,30 1200,90 L1200,200 L0,200 Z" fill="#0c2911"/>
+    </svg>
+  </div>
+
+  <div class="hint">Hacé click en cualquier parte para que florezcan más luces</div>
 
   <script src="script.js"></script>
 </body>

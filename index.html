@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Para Dafne - Noche Mágica 🌻🌙</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="stars-container"></div>
+  <div class="moon"></div>
+  
+  <div class="header">
+    <h1>Para Dafne 🌻</h1>
+    <p>21 de septiembre — un árbol que florece con cada click</p>
+  </div>
+  
+  <div class="controls">
+    <button class="btn" id="musicBtn" title="Música de fondo">🔇</button>
+  </div>
+  
+  <div class="counter" id="counter">LUCES: 0</div>
+
+  <div class="tree" id="tree">
+    <svg class="trunk" viewBox="0 0 300 500" preserveAspectRatio="xMidYMax meet">
+      <defs>
+        <linearGradient id="trunkGrad" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#0a1d10"/>
+          <stop offset="50%" stop-color="#1d522d"/>
+          <stop offset="100%" stop-color="#0a1d10"/>
+        </linearGradient>
+      </defs>
+      <path d="M144,500 C142,420 146,340 150,270 C154,340 158,420 156,500 Z" fill="url(#trunkGrad)"/>
+      <g fill="none" stroke="url(#trunkGrad)" stroke-linecap="round">
+        <path d="M150,300 C120,250 90,205 55,160" stroke-width="6"/>
+        <path d="M150,290 C132,235 118,190 135,120" stroke-width="5"/>
+        <path d="M150,280 C150,230 150,185 150,130" stroke-width="6"/>
+        <path d="M150,290 C168,235 182,190 165,120" stroke-width="5"/>
+        <path d="M150,300 C180,250 210,205 245,160" stroke-width="6"/>
+      </g>
+    </svg>
+    <div class="canopy" id="canopy"></div>
+  </div>
+
+  <div class="ground"></div>
+  <div class="hint">Hace click en cualquier parte para que florezcan mas luces</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
